@@ -1,0 +1,14 @@
+- In spark, computation is done through operations on distributed collections that are automatically parallelized- collections are rdd
+- every spark application contains a driver program, that launches various parallel operations on a cluster. It contains main function, defines distributed datasets on the cluster and applies operations to them
+- Driver program access spark through a sparkcontext-represents a connection to a computing cluster - we can build rdd via sparkcontext
+- To run the operations, driver program typically manages a number of nodes called executors
+- Spark takes your function and automatically ships it to executor nodes
+- Initializing a spark context, see the code - we used set master as local, which tells that spark should run on one thread on local machine, without connecting to cluster. Also, application name will identify your application on cluster manager' ui.
+- see the word count example-
+    - file reading is from hadoop filesystems only
+    - args contains args when after we provide the main class name in spark-submit--to check this point
+
+
+
+
+

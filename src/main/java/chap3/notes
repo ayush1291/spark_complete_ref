@@ -1,0 +1,14 @@
++ actions give the result back to driver or store in external storage system..so if high data, all should not be returned to driver
++ spark computes rdd in lazy fashion, when an action is invoked
++ spark sees whole chain of transformations and computes the data needed for the result in action, 2 egs, if we are filtering the data in 2nd step of transformations, then spark may filter it while reading only...if calling first() action, spark scans the file until it finds the forst matching line
+?+ spark rdd's by default computed each time an action is run on them, if we want to reuse we may call persist-this can be done at many places-see persist example
++ persist on disk instead of memory is also possible
++ rdd is immutable
++ check the union - in union both rdd should be of same type
++ view lineage in spark example
++ avoid using collect as it retrieves all data on single machine, instead use take
++ some common actions used are : reduce - requires return type to be same as of input(as the result of two may be given to other),
++ check aggregate example
++ when data is persisted, it is done with each split(partition) stored in that particular node(when batch is complete that node is removed, so is the data)- spark will keep the data in memory even if the data is large, it will eveict the partitions based on LRU, if large number of partitions are there
+
+

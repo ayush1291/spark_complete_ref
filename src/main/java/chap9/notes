@@ -1,0 +1,14 @@
++ spark sql is to work with structured data, data with schema
++ to implement spark sql capabilities, spark sql provides a schemaRDD
++ looks like a similar rdd, but they store data in a more efficient manner as they know the schema
++ schema rdd can be created from external sources, from the result of queries or from regular rdds
++ spark sql can be built with or without apache hive, the hadoop sql engine
++ if we are running spark with hive support, then we can access hive, udfs, HQL
++ maven has 2 artifacts, with or without hive- we can use any
++ there can be 2 entry points for spark sql, one with HiveContext to provide access to hiveQL and other hive dependent features. Other is basic SQLContext- no dependent on hive
++ to connect spark sql to existing hive, put hive-site.xml in SPARK_HOME/conf dir, else if no hive is there, spark will create its own hive_metastore - called metastore_db. Now, if we run create table, it will be created in /user/hive/warehouse in local or hdfs filesystem as per hdfs-site.xml
++ see example- loading data from a text file and applying schema on it
++ schemardd consists of a dataset<Row> - here, row is similar, but contains schema info, so its storage is more taken care of data types
++ if spark is not connected to hive, it uses embedded derby and creates a metastore_db file for running queries
++ temp tables are local to hove/sql context and will go away when the program exits
++

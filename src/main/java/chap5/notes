@@ -1,0 +1,21 @@
++ Text Files:
+    + use readAsTextFile in spark to load it. Here, each record is one line
+    + use wholetext files if many small files, as then we can have file name as key and value as contents of the file
+    + SaveTextFile takes a dir as input and will output the rdd contents to that file. Here, a dir is taken as input as this allows spark to write data from all the nodes.
++ JSON
+    + see the example
++ Csv
+    + wholeTextFiles will read the complete content of a file at once, it won't be partially spilled to disk or partially garbage collected. Each file will be handled by one core and the data for each file will be one a single machine making it harder to distribute the load, thus only small files are preferred with this
+    + wholetext file preserves the odering
+    + When reading uncompressed files with textFile, it will split the data into chuncks of 32MB. This is advantagous from a memory perspective. This also means that the ordering of the lines is lost, if the order should be preserved then wholeTextFiles should be used.
++ Sequence Files:
+    + in order to save in java, we use custom hadoop formats
++ we can also load data from a non filesystem datasource - like hbase
++ File compression
+    + We can specify a compression codec with most hadoop output formats. Mostly done in filesystem. Like db will not support this.
+    + Compression should be such that it supports splitting of records, as then each worker needs to find the start of a new record
+    + Refer page 102 for different codecs and its features
+    + Spark textFile method can handle compressed  input, it automatically disables splittable even if compression is done such that splittable is possible. Always use newAPiHadoopFIle or hadoopFile and specify the correct compression codec
+    Sequence files allow us to compress only the values in key-value data
+
+

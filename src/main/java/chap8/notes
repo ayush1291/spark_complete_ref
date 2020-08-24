@@ -1,0 +1,2 @@
++ check the code
++ spark2-submit  --class Main --executor-memory 5G --num-executors 3 --executor-cores 6 --driver-memory 10G --master yarn --deploy-mode cluster CalFlipFlops-1.0-SNAPSHOT.jar 1585699200 1585749600 2 output/map/ output/flipflop_map

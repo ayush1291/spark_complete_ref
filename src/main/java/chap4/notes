@@ -1,0 +1,13 @@
++ we can create pair rdds to work with key value pairs: work with them with functions like: sortByKey, groupByKey etc
++ Transformation on two pair rdds: {(1,2),(3,4),(3,9)},{(3,5)} - here we get a new rdd and we can operations on that
+  + join : {(3,(4,5)),(3,(9,5)),}
+  + cogroup : {(1,([2],[])),(3,([4,9],[5])}
++ we can run functions like filter also on them - see example
++ combine by key function similar to aggregate
++ every rdd has fixed number of partitions which decide the degree of parallelism to use when executing operations on the rdd, the same can be found as a parameter when grouping data also- see example
++ groupby on rdd works similar to groupbykey as in rddpair only that key is the result of groupby function
++ rdd.reducebyKey is more efficient than rdd.groupByKey.mapValues as it avoids uncessary creation of list based on key and keeping it in memory
++ advance_partition eg- when we persist, spark must have saved all the partitions chain and where what data is there--we can see the same in debugtoString method- also, we must give num of partitions to be atleast equal to num of cores in the cluster
++ many other operations automatically result in an rdd with known partitioning info and many operations other than join will take advantage of it. like sortbykey will result in range-partitioned rdd. Also, operations like map cause new rdd to forget the parent' partitioning information, as such operations could theoritically modify key of each record - as in map we may modify the key, so spark has methods like mapValues which keep the partition info
++ In order to see if an rdd has partition info, we can use the partition property in rdd - see example for detailed partitions
+

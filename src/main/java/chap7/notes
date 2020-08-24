@@ -1,0 +1,2 @@
++ when broadcast var are used, they are read only...so should be immutable...if we try to change their value in worker node, then a copy is changed at that place...it will not reflect in other nodes..the values sent on each node uses an efficient bit torrent like communication
++ we may further optimize by working on per partition basis...wherein if some connection object is being created, it can be created only once per partition

@@ -1,0 +1,14 @@
++ try the chap4, advance_partition eg, also see if join is done without persist of partitioned data on an orc file, does spark computes the partitions again and again in this scenario also? - in local it may not be showing shuffle as not required there
++ try to connect spark with a jdbc, a no sql and if possible kafka to read data and do some processing and write it somewhere amonst these
++ Try to saveAsTextFile in a cluster, and see if partitions are made in the dir passed in cluster
++ How can we load json with spark sql? - page 167
++ If constructing json parser is expensive, then use mappartitions to re use the parser,- page 106
++ saving a csv file using mappartitions - 5
++ read orc and sequence file in detail
++ Load data from hbase on page 96 -5 - this is an example of loading data from a non filesystem datasource -9
++ Load data from hdfs, hive, -9
++ Load data from jdbc -9
++ create table using spark sql with hiveContext and without hiveContext - what will be different here?
++ see the ui storage tab, when we have cached the data using spark sql
++ what happens to a shared variable when passed in a functional interface-how its value changes in the cluster..try doing this in spark batch job nd after calling the action, get the value of the variable passed
++
